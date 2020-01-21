@@ -11,7 +11,7 @@ import os
 #Set working directory 
 print(os.getcwd())
 os.chdir("C:\\Users\\KOMSUN\\Documents\\Kaggle\\Netflix Shows")
-dataset = pd.read_csv("netflix_titles_nov_2019.txt",
+dataset = pd.read_csv("netflix_titles.txt",
                        delimiter="\t",
                        quoting=3)
 #Cleaning the texts
