@@ -11,7 +11,8 @@ import os
 #Set working directory 
 print(os.getcwd())
 os.chdir("C:\\Users\\KOMSUN\\Documents\\Kaggle\\Netflix Shows")
-dataset = pd.read_csv("netflix_titles.txt",
-                       delimiter="\t",
-                       quoting=3)
-#Cleaning the texts
+netflix_shows_2020  = pd.read_csv("netflix_titles.csv")
+#-------------------------------------------------------------------------------
+#First task
+#Understanding what content is available in different countries
+netflix_shows_2020=netflix_shows_2020.dropna(subset=["country"]) #Drop na values in the column: country
