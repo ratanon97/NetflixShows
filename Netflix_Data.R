@@ -17,5 +17,10 @@ levels(netflix_shows_2020$rating)
 netflix_shows_2020_backup <- netflix_shows_2020
 options(max.print=1000000)
 #Check rows with empty values
-netflix_shows_2020[!complete.cases(netflix_shows_2020),]
-netflix_shows_2020 <- netflix_shows_2020[!is.na(netflix_shows_2020$country),]
+netflix_shows_2020[!complete.cases(netflix_shows_2020),] #Check to see which rows have empty values
+netflix_shows_2020 <- netflix_shows_2020[!is.na(netflix_shows_2020$country),] #Removed shows with no country data
+#Visualise using geom_count 
+library(ggplot2)
+Rating_Country <- ggplot(data=netflix_shows_2020)
+#Use the geom_count
+Rating_Country + geom_count(aes(x=country,y=rating))
