@@ -26,7 +26,7 @@ netflix_shows_2020$release_year <- factor(netflix_shows_2020$release_year)
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
-  filter(str_detect(country,"United States")) #Filter Countries with United States
+  filter(str_detect(country,"United States")) #Filter Countries with the pattern United States in the column
 #Visualise (ratings and country) using geom_count 
 library(ggplot2) #To make it fail-safe if tidyverse package was not imported
 Rating_Country <- ggplot(data=netflix_shows_2020)
