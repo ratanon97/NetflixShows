@@ -6,20 +6,21 @@
 #Set working directory
 getwd()
 setwd("C:\\Users\\KOMSUN\\Documents\\Kaggle\\Netflix Shows")
-netflix_shows_2020 <- read.csv('netflix_titles.csv',
-                               na.strings=c(""))
+library(tidyverse)
+netflix_shows_2020 <- read_csv('netflix_titles.csv') #Note: read_csv is part of the tidyverse
 #-------------------------------------------------------------------------------
 #First task
 #Understanding what content is available in different countries
-levels(netflix_shows_2020$rating)
+levels(netflix_shows_2020$listed_in)
 #Lets group the movies' PG rating with the countries
 #Filter out shows with no country data
-netflix_shows_2020_backup <- netflix_shows_2020
-options(max.print=1000000)
+netflix_shows_2020_backup <- netflix_shows_2020 #Create backup of the dataset
+options(max.print=1000000) #Increasing printing size when executing a dataframe in the console
 #Check rows with empty values
 netflix_shows_2020[!complete.cases(netflix_shows_2020),] #Check to see which rows have empty values
 netflix_shows_2020 <- netflix_shows_2020[!is.na(netflix_shows_2020$country),] #Removed shows with no country data
-#Visualise using geom_count 
+
+#Visualise (ratings and country) using geom_count 
 library(ggplot2)
 Rating_Country <- ggplot(data=netflix_shows_2020)
 #Use the geom_count
