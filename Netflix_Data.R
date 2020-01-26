@@ -42,7 +42,4 @@ blank_theme <- theme_minimal()+
     plot.title=element_text(size=14, face="bold")
   )
 Pie_Chart + scale_fill_brewer("Blues") + blank_theme +
-  theme(axis.text.x=element_blank())+
-  geom_text(aes(y = value/2 + c(0, cumsum(value)[-length(value)]), 
-                label = percent(value/100)), size=5)
-count()
+  theme(axis.text.x=element_blank())

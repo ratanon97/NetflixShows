@@ -16,3 +16,6 @@ netflix_shows_2020  = pd.read_csv("netflix_titles.csv")
 #First task
 #Understanding what content is available in different countries
 netflix_shows_2020=netflix_shows_2020.dropna(subset=["country"]) #Drop na values in the column: country
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):  
+    print(netflix_shows_2020)
+#Specify which rows and columns the dataframe should be showw
