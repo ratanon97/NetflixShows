@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import re
 #-------------------------------------------------------------------------------
 #Set working directory 
 print(os.getcwd())
@@ -21,5 +22,5 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 netflix_shows_2020=netflix_shows_2020.dropna(subset=["country"]) #Drop na values in the column: country
 netflix_shows_2020.info()
 netflix_shows_2020["show_id"] = pd.Categorical(netflix_shows_2020["show_id"])
-netflix_shows_2020["release_year"] = pd.Categorical(netflix_shows_2020["release_year"])
+netflix_shows_2020["release_year"] = pd.Categorical(netflix_shows_2020["release_year"]) #Convert data types to categorical
 
