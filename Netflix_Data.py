@@ -23,4 +23,5 @@ netflix_shows_2020=netflix_shows_2020.dropna(subset=["country"]) #Drop na values
 netflix_shows_2020.info()
 netflix_shows_2020["show_id"] = pd.Categorical(netflix_shows_2020["show_id"])
 netflix_shows_2020["release_year"] = pd.Categorical(netflix_shows_2020["release_year"]) #Convert data types to categorical
-
+USA_filter = netflix_shows_2020["country"].str.contains('United States') #Filterto create USA dataframe
+USA_netflix_shows_2020 = netflix_shows_2020[USA_filter]
