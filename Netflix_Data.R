@@ -50,7 +50,7 @@ Bar_Chart <- ggplot(data=USA_netflix_shows_2020,aes(x=type)) +
                  colour="Black",
                  size=1) +
   xlab("Type of Netflix Shows")+
-  ylab("Population")+
+  ylab("Number of Shows")+
   ggtitle("Type of TV shows provided in the USA")+ #Making the graph look nicer using the Theme function
   theme(axis.title.x=element_text(size=15),
         axis.title.y=element_text(size=15),

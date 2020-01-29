@@ -33,5 +33,5 @@ fig.set_size_inches(11.7,8.27)
 sns.catplot(x="type", kind="count", palette="ch:.25", data=USA_netflix_shows_2020) #Create a count plot
 plt.title('Type of TV shows provided in the USA', fontsize = 16)
 plt.xlabel('Type of Netflix Shows',fontsize = 10)
-plt.ylabel('Population',fontsize = 10)
+plt.ylabel('Number of Shows',fontsize = 10)
 plt.show()
