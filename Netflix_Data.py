@@ -30,8 +30,9 @@ USA_netflix_shows_2020 = netflix_shows_2020[USA_filter]
 sns.set_style("darkgrid")
 fig, ax = plt.subplots() #Put the whole graph in a "subplot" but will still give a normal graph #HACK
 fig.set_size_inches(11.7,8.27)
-sns.catplot(x="type", kind="count", palette="ch:.25", data=USA_netflix_shows_2020) #Create a count plot
+sns.catplot(x="type", kind="count", palette="spring", data=USA_netflix_shows_2020) #Create a count plot
 plt.title('Type of TV shows provided in the USA', fontsize = 16)
 plt.xlabel('Type of Netflix Shows',fontsize = 10)
 plt.ylabel('Number of Shows',fontsize = 10)
 plt.show()
+#Add number of observations on the plot
