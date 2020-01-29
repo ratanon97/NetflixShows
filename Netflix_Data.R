@@ -22,6 +22,14 @@ netflix_shows_2020 <- netflix_shows_2020[!is.na(netflix_shows_2020$country),] #R
 #Factorise show IDs and Release years
 netflix_shows_2020$show_id <- factor(netflix_shows_2020$show_id)
 netflix_shows_2020$release_year <- factor(netflix_shows_2020$release_year)
+#Pre-Processing by Separating Genres
+#Method source: https://data-flair.training/blogs/data-science-r-movie-recommendation/
+netflix_genre <- as.data.frame(netflix_shows_2020$listed_in,stringsAsFactors = FALSE)
+library(data.table)
+netflix_genre_2<-as.data.frame(tstrsplit(netflix_genre[,1], '[,]', 
+                        type.convert=TRUE), 
+              stringsAsFactors=FALSE) #Split genres
+colnames(netflix_genre_2) <- c(1,2,3)
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
@@ -58,4 +66,3 @@ Bar_Chart <- ggplot(data=USA_netflix_shows_2020,aes(x=type)) +
         axis.text.y=element_text(size=15,colour="black"),
         plot.title=element_text(size=20),
         strip.text=element_text(size=10))
-str(USA_netflix_shows_2020$listed_in)
