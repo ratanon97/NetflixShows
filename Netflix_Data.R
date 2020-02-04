@@ -7,6 +7,8 @@
 getwd()
 setwd("C:\\Users\\KOMSUN\\Documents\\Kaggle\\Netflix Shows")
 library(tidyverse)
+library(recommenderlab)
+library(reshape2)
 netflix_shows_2020 <- read_csv('netflix_titles.csv') #Note: read_csv is part of the tidyverse
 options(max.print=1000000) #Increasing printing size when executing a dataframe in the console
 #-------------------------------------------------------------------------------
@@ -30,6 +32,8 @@ netflix_genre_2<-as.data.frame(tstrsplit(netflix_genre[,1], '[,]',
                         type.convert=TRUE), 
               stringsAsFactors=FALSE) #Split genres
 colnames(netflix_genre_2) <- c(1,2,3)
+netflix_genre_2 <- factor(netflix_genre_2)
+genre_vectors <- c("")
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
