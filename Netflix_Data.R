@@ -32,12 +32,18 @@ netflix_genre_2<-as.data.frame(tstrsplit(netflix_genre[,1], '[,]',
                         type.convert=TRUE), 
               stringsAsFactors=FALSE) #Split genres
 colnames(netflix_genre_2) <- c(1,2,3)
-netflix_genre_2 <- factor(netflix_genre_2)
+for (i in 1:3){
+  netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
+} #Loop all the columns to be factorised
+str(netflix_genre_2)
 genre_vectors <- c("")
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
   filter(str_detect(country,"United States")) #Filter Countries with the pattern United States in the column
+
+#---------------------------------------------------------------------
+#Visualisation Part
 #Create pie chart to see the number of movies and TV shows are provided in the USA
 library(ggplot2) #Make it fail safe if tidyverse package was not imported
 library(scales) #For formatting the pie chart with % labels
