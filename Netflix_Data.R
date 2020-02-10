@@ -31,12 +31,12 @@ library(data.table)
 netflix_genre_2<-as.data.frame(tstrsplit(netflix_genre[,1], '[,]', 
                         type.convert=TRUE), 
               stringsAsFactors=FALSE) #Split genres
-colnames(netflix_genre_2) <- c(1,2,3)
+colnames(netflix_genre_2) <- c("First_Genre","Second_Genre","Third_Genre")
 for (i in 1:3){
   netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
 } #Loop all the columns to be factorised
-str(netflix_genre_2)
-genre_vectors <- c("")
+Unique_Genres <- as.character(unique(unlist(netflix_genre_2))) #Display all the unique genres from the data frame
+genre_vector <- c("")
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
