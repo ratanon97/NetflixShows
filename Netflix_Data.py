@@ -12,7 +12,7 @@ import re
 #-------------------------------------------------------------------------------
 #Set working directory 
 print(os.getcwd())
-os.chdir("C:\\Users\\KOMSUN\\Documents\\Kaggle\\Netflix Shows")
+os.chdir("C:\\Users\\KOMSUN\\Documents\\GitHub\\NetflixShows\\Data Source")
 netflix_shows_2020  = pd.read_csv("netflix_titles.csv")
 #-------------------------------------------------------------------------------
 #First task
