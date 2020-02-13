@@ -35,6 +35,10 @@ colnames(netflix_genre_2) <- c("First_Genre","Second_Genre","Third_Genre")
 for (i in 1:3){
   netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
 } #Loop all the columns to be factorised
+#Using data.table library
+#Remove the leading whitespaces in the data frame
+cols_to_be_rectified <- names(netflix_genre_2)[vapply(netflix_genre_2, is.character, logical(1))]
+netflix_genre_2[,cols_to_be_rectified] <- lapply(netflix_genre_2[,cols_to_be_rectified], trimws)
 Unique_Genres <- as.character(unique(unlist(netflix_genre_2))) #Display all the unique genres from the data frame
 genre_vector <- c("Children & Family Movies","Stand-Up Comedy","Kids' TV","Comedies",
                   "Crime TV Shows","International Movies","Docuseries","Action & Adventure",
@@ -42,7 +46,11 @@ genre_vector <- c("Children & Family Movies","Stand-Up Comedy","Kids' TV","Comed
                   "International TV Shows","Romantic TV Shows","TV Comedies","British TV Shows",
                   "Anime Features","Independent Movies","Anime Series","TV Horror",
                   "Movies","Reality TV","Stand-Up Comedy & Talk Shows","Thrillers",
-                  )
+                  "TV Action & Adventure","Classic Movies","TV Dramas","Music & Musicals",
+                  "Sci-Fi & Fantasy","Spanish-Language TV Shows","TV Shows","Sports Movies",
+                  "Classic & Cult TV","Romantic Movies","TV Sci-Fi & Fantasy","Science & Nature TV",
+                  "Korean TV Shows","Teen TV Shows","LGBTQ Movies","TV Mysteries",
+                  "TV Thrillers","Faith & Sprituality")
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
