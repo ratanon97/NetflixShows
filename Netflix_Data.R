@@ -28,13 +28,12 @@ netflix_shows_2020$release_year <- factor(netflix_shows_2020$release_year)
 #Method source: https://data-flair.training/blogs/data-science-r-movie-recommendation/
 netflix_genre <- as.data.frame(netflix_shows_2020$listed_in,stringsAsFactors = FALSE)
 library(data.table)
+#Create a one-hot encoding to create a matrix that comprises of corresponding genres for each of the films.
 netflix_genre_2<-as.data.frame(tstrsplit(netflix_genre[,1], '[,]', 
                         type.convert=TRUE), 
               stringsAsFactors=FALSE) #Split genres
 colnames(netflix_genre_2) <- c("First_Genre","Second_Genre","Third_Genre")
-for (i in 1:3){
-  netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
-} #Loop all the columns to be factorised
+#Loop all the columns to be factorised
 #Using data.table library
 #Remove the leading whitespaces in the data frame
 cols_to_be_rectified <- names(netflix_genre_2)[vapply(netflix_genre_2, is.character, logical(1))]
@@ -51,6 +50,23 @@ genre_vector <- c("Children & Family Movies","Stand-Up Comedy","Kids' TV","Comed
                   "Classic & Cult TV","Romantic Movies","TV Sci-Fi & Fantasy","Science & Nature TV",
                   "Korean TV Shows","Teen TV Shows","LGBTQ Movies","TV Mysteries",
                   "TV Thrillers","Faith & Sprituality")
+for (i in 1:3){
+  netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
+}
+genre_mat_1 <- matrix(0,5758,42)
+genre_mat_1[1,] <- genre_vector
+colnames(genre_mat_1) <- genre_vector
+for (index in 1:nrow(netflix_genre_2)) {
+  for (col in 1:ncol(netflix_genre_2)) {
+    gen_col = which(genre_mat_1[1,] == netflix_genre_2[index,col]) 
+    genre_mat_1[index+1,gen_col] <- 1
+  }
+}
+genre_mat_2 <- as.data.frame(genre_mat_1[-1,], stringsAsFactors=FALSE) #remove first row, which was the genre list
+for (col in 1:ncol(genre_mat_2)) {
+  genre_mat_2[,col] <- as.integer(genre_mat_2[,col]) #convert from characters to integers
+} 
+
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
