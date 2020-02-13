@@ -36,7 +36,13 @@ for (i in 1:3){
   netflix_genre_2[,i] <- factor(netflix_genre_2[,i])
 } #Loop all the columns to be factorised
 Unique_Genres <- as.character(unique(unlist(netflix_genre_2))) #Display all the unique genres from the data frame
-genre_vector <- c("")
+genre_vector <- c("Children & Family Movies","Stand-Up Comedy","Kids' TV","Comedies",
+                  "Crime TV Shows","International Movies","Docuseries","Action & Adventure",
+                  "Cult Movies","Documentaries","Horror Movies","Dramas",
+                  "International TV Shows","Romantic TV Shows","TV Comedies","British TV Shows",
+                  "Anime Features","Independent Movies","Anime Series","TV Horror",
+                  "Movies","Reality TV","Stand-Up Comedy & Talk Shows","Thrillers",
+                  )
 #Shows in USA
 library(dplyr) #To make it fail-safe if tidyverse package was not imported
 USA_netflix_shows_2020 <- netflix_shows_2020 %>%
